@@ -2,10 +2,12 @@
 
 from random import randint,sample
 import timeit
+from time import time
 from collections import namedtuple
 from collections import Counter
 import re
 from collections import OrderedDict
+from collections import deque
 
 print '**************************筛选数据**************************'
 # 如何在列表，字典，集合中根据条件筛选数据
@@ -185,8 +187,25 @@ result = reduce(lambda a, b: a&b, m)
 print result
 
 
+
+print '**************************历史记录**************************'
+# 如何实现用户的历史记录功能
+
+# 解决方案：
+#   from collections import deque
+
+q = deque(maxlen = 3)
+
+q.append(3)
+q.append(5)
+q.append(2)
+print q
+
+q.append(4)
+print q
+
 print '**************************字典有序**************************'
-# 让字典保持有序
+# 如何让字典保持有序
 # 
 # 例：
 #   竞赛系统，选手完成题目后将比赛用时记录到字典中，并可按照姓名查询成绩
@@ -200,7 +219,7 @@ players = list('ABCDEFGH')
 start = time()
 
 for i in xrange(8):
-    raw_in()
+    raw_input()
     p = players.pop(randint(0, 7-i))
     end = time()
     print i + 1, p, end - start
@@ -209,20 +228,5 @@ for i in xrange(8):
 print '\n'
 
 for k in d:
-    print k, d[k]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	print k, d[k]
 

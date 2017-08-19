@@ -33,7 +33,7 @@ b = ''
 print b and 'world'
 
 print '**********************list和tuple*****************************'
-
+# list和tuple都可以进行切片处理，通过下标索引访问单个元素
 # list
 L = ['adam', 95.5, True, 'lisa', 85, True, 'bart', 59, False];
 print L[4]
@@ -354,7 +354,7 @@ for t in enumerate(d):
 for index, name in enumerate(range(5)):
     print index, '-', name
 
-# zip函数，将两个list合并为一个
+# zip函数，将两个list合并为一个list
 print zip([10, 20, 30], ['A', 'B', 'C'])
 
 L = ['Adam', 'Lisa', 'Bart', 'Paul']
@@ -363,15 +363,29 @@ for index, name in zip(range(1,len(L)+1),L):
 
 print '----------对dict迭代----------'
 # dict 对象有一个 values() 方法，这个方法把dict转换成一个包含所有value的list，这样，我们迭代的就是 dict的每一个 value：
+
 d = { 'Adam': 95, 'Lisa': 85, 'Bart': 59 }
-print d.itervalues() #速度更快
-print d.values()
+print '键的对象转化为list：',list(iter(d)) # iter()函数是键的对象
+
+print '----------key----------'
+print '所有的key:',d.keys()
+# keys迭代版本iterkeys
+print 'iterkeys对象：',d.iterkeys()
+for key in d.iterkeys():
+    print key
+
+print '----------values----------'
+print '所有的value:',d.values()
+# values迭代版本itervalues
+print 'itervalues对象：',d.itervalues()
+for value in d.itervalues():
+    print value
+
+print '----------items----------'
 # items() 方法把dict对象转换成了包含tuple的list，我们对这个list进行迭代，可以同时获得key和value：
-print d.items()
-for key, value in d.items():
-    print key, ':', value
-# items() 也有一个对应的 iteritems()，iteritems() 不把dict转换成list，而是在迭代过程中不断给出 tuple，所以， iteritems() 不占用额外的内存。
-print '----------iteritems----------'
+print 'items:',d.items()
+# items() 也有一个对应的 iteritems()，iteritems() 不把dict转换成list，而是在迭代过程中不断给出 tuple，所以iteritems() 不占用额外的内存。
+print 'iteritems对象：',d.iteritems()
 for key, value in d.iteritems():
     print key, ':', value
 
