@@ -19,7 +19,7 @@ using namespace std;
 	int listLength(List *list)		当前长度
 	bool getElem(List *list, int i, Elem *e) 			获取指定元素
 	int locateElem(List *list, Elem *e) 				寻找第一个满足e的数据元素的位序
-	bool priorElem(List *list, Elem *currentElem, Elem *preElem)		获取指定元素的前驱
+	bool priorElem(List *list, Elem *currentElem, Elem *preElem)	获取指定元素的前驱
 	bool nextElem(List *list, Elem currentElem, Elem *nextElem)		获取指定元素的后继
 	bool insertElem(List *list, int i, Elem *e)		在第i个位置插入元素
 	bool delteElem(List *list, int i, Elem *e)		删除第i个位置的元素

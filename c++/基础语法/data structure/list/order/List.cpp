@@ -97,7 +97,6 @@ bool List::insertElem(int i, int *e)
 
 bool List::delteElem(int i, int *e)
 {
-
 	// 先删除，再移动
 	m_pList[i] = *e;
 

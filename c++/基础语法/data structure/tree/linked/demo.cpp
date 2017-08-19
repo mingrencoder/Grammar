@@ -12,8 +12,15 @@
 	Node *searchNode(int nodeIndex);							// 根据索引搜索节点
 	bool addNode(int nodeIndex, int direction, Node *pNode);	// 添加节点
 	bool deleteNode(int nodeIndex, Node *pNode);				// 删除节点
-	void treeTraverse();										// 遍历
+	void preOrderTraverse();										// 前序遍历
+	void inOrderTraverse();										// 中序遍历
+	void postOrderTraverse();										// 后序遍历
 
+    节点要素：索引，数据，左孩子指针，右孩子指针，父节点指针
+
+    0134256
+    3140526
+    2415620
 
 	关于数组与树之间的算法转化：
 
@@ -52,17 +59,7 @@ int main(void)
     pTree->addNode(2, 0, &node5);
     pTree->addNode(2, 1, &node6);
 
-    // 查找
-    int *p = pTree->searchNode(3);
-    cout << "p = " << *p << endl;
 
-    // 删除
-    int node = 0;
-    pTree->deleteNode(2, &node);
-    cout << "Node = " << node << endl;
-
-
-    pTree->treeTraverse();
     delete pTree;
 
     return 0;

@@ -2,13 +2,14 @@
 #include <iostream>
 using namespace std;
 
-Tree::Tree(int size)
+Tree::Tree(int size, int *pRoot)
 {
     m_iSize = size;
     m_pTree = new int[size];
     for (int i = 0; i < size; ++i) {
         m_pTree[i] = 0;
     }
+    m_pTree[0] = *pRoot;
 }
 
 Tree::~Tree()
@@ -17,7 +18,7 @@ Tree::~Tree()
     m_pTree = NULL;
 }
 
-Node Tree::*searchNode(int nodeIndex)
+int *Tree::searchNode(int nodeIndex)
 {
     if(nodeIndex < 0 || nodeIndex >= m_iSize)
     {
@@ -30,7 +31,7 @@ Node Tree::*searchNode(int nodeIndex)
     return &m_pTree[nodeIndex];
 }
 
-bool Tree::addNode(int nodeIndex, int direction, Node *pNode)
+bool Tree::addNode(int nodeIndex, int direction, int *pNode)
 {
     if(nodeIndex < 0 || nodeIndex >= m_iSize)
     {
@@ -48,7 +49,7 @@ bool Tree::addNode(int nodeIndex, int direction, Node *pNode)
         {
             return false;
         }
-        if(m_pTree[nodeIndex * 2 + 1] == 0) // 判断此位置是否已存在节点
+        if(m_pTree[nodeIndex * 2 + 1] != 0) // 判断此位置是否已存在节点
         {
             return false;
         }
@@ -61,7 +62,7 @@ bool Tree::addNode(int nodeIndex, int direction, Node *pNode)
         {
             return false;
         }
-        if(m_pTree[nodeIndex * 2 + 2] == 0) // 判断此位置是否已存在节点
+        if(m_pTree[nodeIndex * 2 + 2] != 0) // 判断此位置是否已存在节点
         {
             return false;
         }
@@ -70,7 +71,7 @@ bool Tree::addNode(int nodeIndex, int direction, Node *pNode)
     return true;
 }
 
-bool Tree::deleteNode(int nodeIndex, Node *pNode)
+bool Tree::deleteNode(int nodeIndex, int *pNode)
 {
     if(nodeIndex < 0 || nodeIndex >= m_iSize)
     {
@@ -82,7 +83,7 @@ bool Tree::deleteNode(int nodeIndex, Node *pNode)
     }
 
     *pNode = m_pTree[nodeIndex];
-    m_pTree[nodeIndex] == 0;
+    m_pTree[nodeIndex] = 0;
     return true;
 }
 
