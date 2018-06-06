@@ -46,25 +46,68 @@ yum install nginx
     /var/cache/nginx        目录      Nginx的缓存目录
 
 ## 2、编译参数
+    命令：nginx -V
 
 ## 3、Nginx基本配置语法
 
+    user                设置nginx服务的系统使用用户
+    worker_process      工作进程数
+    error_log           nginx的错误日志
+    pid                 nginx启动时的pid
+
+    events      worker_connections      每个进程允许的最大连接数
+                use                     工作进程数
+
+    
+
 # 三、默认模块
+    nginx -V  查看模块
 
-# 四、Nginx的log
+## ngx_http_stub_status_module
+    Syntax: stub_status;
+    Default:    —
+    Context:    server, location
+    e.g.
+    location /mystatus {
+        stub_status;
+    }
 
-# 五、访问限制 
+## ngx_http_random_index_module
+    Syntax: random_index on | off;
+    Default:    random_index off;
+    Context:    location
+    e.g.
+    location / {
+        random_index on;
+    }
 
-## 1、HTTP的请求和连接
+## ngx_http_access_module
+    Syntax: allow address | CIDR | unix: | all;
+    Default:    —
+    Context:    http, server, location, limit_except
+    e.g.
+    location / {
+        deny  192.168.1.1;
+        allow 192.168.1.0/24;
+        allow 10.1.1.0/16;
+        allow 2001:0db8::/32;
+        deny  all;
+    }
 
-## 2、请求限制与连接限制
+## ngx_http_auth_basic_module
+    Syntax: auth_basic_user_file file;
+    Default:    —
+    Context:    http, server, location, limit_except
+    e.g.
+    location / {
+        auth_basic           "closed site";
+        auth_basic_user_file conf/htpasswd;
+    }
 
-## 3、access模块配置语法
 
-## 4、请求限制局限性
 
-## 5、基本安全认证
 
-## 6、auth模块配置语法
+## HTTP的请求和连接
+    curl http://www.baidu.com
+    curl -v http://www.baidu.com
 
-## 7、安装认证局限性
